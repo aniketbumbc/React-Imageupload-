@@ -1,0 +1,16 @@
+
+
+      getAllImages() {
+            const images = [];
+           Promise.all([         
+           (storage.ref('images/').listAll().then((image) => {
+                  image.items.forEach((imagRef) => {
+                        imagRef.getDownloadURL().then((url) => {
+                              images.push(url);
+                        })
+                  })
+            }))])
+
+            console.log("Images are herer ",images);
+      }
+
